@@ -831,12 +831,12 @@ client.on("interactionCreate", async (interaction) => {
   if (typeof uInter.coolDown == "object" && !Array.isArray(uInter.coolDown)) uInter.coolDown = [uInter.coolDown];
 
   let converter = {
-    "user": interaction.user.id,
-    "member": interaction.user.id + "" + interaction.guild?.id,
-    "channel": interaction.channelId || interaction.user.id + " _c",
-    "guild": interaction.guildId || interaction.user.id + "_g",
-    "message": interaction.message?.id || (interaction.channelId + "_m") || (interaction.user.id + "_m"),
-    "any": "any"
+    "user": uInter.id + "_" + interaction.user.id,
+    "member": uInter.id + "_" + interaction.user.id + "" + interaction.guild?.id,
+    "channel": uInter.id + "_" + (interaction.channelId || interaction.user.id + " _c"),
+    "guild": uInter.id + "_" + (interaction.guildId || interaction.user.id + "_g"),
+    "message": uInter.id + "_" + (interaction.message?.id || (interaction.channelId + "_m") || (interaction.user.id + "_m")),
+    "any": uInter.id + "_" + "any"
   }
 
   let now = Date.now();
